@@ -12,12 +12,16 @@ dotenv.config();
 // };
 
 const corsOptions = {
-    origin: ['http://localhost:5173', 'https://foodapp-priqlfh9o-souvik-hazras-projects.vercel.app'],
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-};
+    // origin: ['http://localhost:5173', 'https://foodapp-priqlfh9o-souvik-hazras-projects.vercel.app'],
+    // methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    // allowedHeaders: ['Content-Type', 'Authorization'],
 
-app.options('*', cors(corsOptions));  // Handle preflight requests
+    origin: "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  preflightContinue: false,
+  optionsSuccessStatus: 204
+
+};
 
 app.use(cors(corsOptions));
 app.use(express.json());
