@@ -7,8 +7,14 @@ const userRouter = require("./Routes/User.Route")
 
 dotenv.config();
 
+// const corsOptions = {
+//     origin: ['http://localhost:5173']
+// };
+
 const corsOptions = {
-    origin: ['http://localhost:5173']
+    origin: ['http://localhost:5173', 'https://foodapp-priqlfh9o-souvik-hazras-projects.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
 app.use(cors(corsOptions));
