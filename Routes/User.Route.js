@@ -115,6 +115,33 @@ router.post("/update-password", async (req, res) => {
       res.status(500).json({ message: "Internal Server Error", error: error.message });
     }
   });
-  
+
+
+// Network issue
+router.post("/payment", async (req, res) => {
+  try {
+      const token = req.headers.authorization?.split(" ")[1];
+      if (!token) {
+          return res.status(401).json({ message: "Unauthorized: No token provided" });
+      }
+
+      const decoded = jwt.verify(token, process.env.JWT_SECRET);
+      if (!decoded) {
+          return res.status(403).json({ message: "Invalid token" });
+      }
+
+      // Simulate payment logic
+      const paymentSuccess = true; // Replace with actual payment processing logic
+      if (!paymentSuccess) {
+          return res.status(400).json({ message: "Payment processing failed" });
+      }
+
+      res.status(200).json({ message: "Payment successful" });
+  } catch (error) {
+      res.status(500).json({ message: "Internal Server Error", error: error.message });
+  }
+});
+
+
 
 module.exports = router;

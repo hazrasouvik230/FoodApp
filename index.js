@@ -7,10 +7,6 @@ const userRouter = require("./Routes/User.Route")
 
 dotenv.config();
 
-// const corsOptions = {
-//     origin: ['http://localhost:5173']
-// };
-
 const corsOptions = {
     origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
